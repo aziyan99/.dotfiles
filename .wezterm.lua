@@ -29,7 +29,15 @@ config.keys = {
     mods = 'SHIFT|CTRL|ALT',
     action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
   },
+  {
+    key = 'r',
+    mods = 'SHIFT|CTRL|ALT',
+    action = wezterm.action.ReloadConfiguration,
+  },
 }
+
+-- Font
+config.font = wezterm.font 'Iosevka Term'
 
 -- window padding
 config.window_padding = {
@@ -40,10 +48,10 @@ config.window_padding = {
 }
 
 config.hide_tab_bar_if_only_one_tab = true
+config.tab_bar_at_bottom = true
 
 -- Spawn a pwsh shell in login mode
-config.default_prog = { 'C:\\Program Files\\PowerShell\\7\\pwsh.exe', '-nologo' }
+config.default_prog = { 'C:\\Program Files\\PowerShell\\7\\pwsh.exe', '-l' }
 
 -- and finally, return the configuration to wezterm
 return config
-
