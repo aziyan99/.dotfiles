@@ -1,0 +1,104 @@
+live_config_reload = true
+
+[bell]
+animation = "EaseOutExpo"
+color = "0xffffff"
+duration = 0
+
+[colors.primary]
+background = "0x282726"
+foreground = "0xFFFCF0"
+dim_foreground = "0xFFFCF0"
+bright_foreground = "0xFFFCF0"
+
+[colors.cursor]
+text = "0xFFFCF0"
+cursor = "0xFFFCF0"
+
+[colors.normal]
+black = "0x100F0F"
+red = "0xAF3029"
+green = "0x66800B"
+yellow = "0xAD8301"
+blue = "0x205EA6"
+magenta = "0xA02F6F"
+cyan = "0x24837B"
+white = "0xFFFCF0"
+
+[colors.bright]
+black = "0x100F0F"
+red = "0xD14D41"
+green = "0x879A39"
+yellow = "0xD0A215"
+blue = "0x4385BE"
+magenta = "0xCE5D97"
+cyan = "0x3AA99F"
+white = "0xFFFCF0"
+
+[colors.dim]
+black = "0x100F0F"
+red = "0xAF3029"
+green = "0x66800B"
+yellow = "0xAD8301"
+blue = "0x205EA6"
+magenta = "0xA02F6F"
+cyan = "0x24837B"
+white = "0xFFFCF0"
+
+[cursor]
+style = "Block"
+unfocused_hollow = true
+
+[debug]
+log_level = "OFF"
+persistent_logging = false
+print_events = false
+render_timer = false
+
+[font]
+size = 9.0
+
+[font.bold]
+family = "Iosevka"
+style = "Medium"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "Iosevka"
+style = "Regular Italic"
+
+[font.normal]
+family = "Iosevka"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 0
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[selection]
+save_to_clipboard = false
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[window]
+decorations = "buttonless"
+dynamic_padding = false
+opacity = 0.96
+startup_mode = "Windowed"
+
+[window.dimensions]
+columns = 100
+lines = 85
+
+[window.padding]
+x = 0
+y = 0
