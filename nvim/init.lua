@@ -389,6 +389,17 @@ require("lazy").setup({
 			})
 		end,
 	},
+	{
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"sindrets/diffview.nvim", -- optional - Diff integration
+
+			-- Only one of these is needed.
+			"ibhagwan/fzf-lua", -- optional
+		},
+		config = true,
+	},
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
