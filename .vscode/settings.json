@@ -1,0 +1,151 @@
+{
+    "extensions.ignoreRecommendations": true,
+    "workbench.startupEditor": "none",
+    "editor.codeActionsOnSave": {
+        "source.addMissingImports": "always",
+        "source.organizeImports": "always"
+    },
+    "editor.cursorSurroundingLines": 5,
+    "editor.fontLigatures": true,
+    "editor.formatOnSave": true,
+    "editor.inlineSuggest.enabled": true,
+    "editor.lineNumbers": "relative",
+    "editor.linkedEditing": true,
+    "editor.minimap.enabled": false,
+    "editor.stickyScroll.enabled": false,
+    "editor.suggest.insertMode": "replace",
+    "editor.suggestFontSize": 14,
+    "editor.wordWrap": "on",
+    "errorLens.fontStyleItalic": true,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "extensions.autoUpdate": "onlyEnabledExtensions",
+    "typescript.preferences.importModuleSpecifier": "relative",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "update.showReleaseNotes": false,
+    "vim.foldfix": true,
+    "vim.highlightedyank.color": "rgba(230, 97, 89, 0.7)",
+    "vim.highlightedyank.enable": true,
+    "vim.highlightedyank.textColor": "white",
+    "vim.hlsearch": true,
+    "vim.leader": "<space>",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "leader",
+                "r"
+            ],
+            "commands": [
+                "editor.action.rename"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "w"
+            ],
+            "commands": [
+                ":w!"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "q"
+            ],
+            "commands": [
+                ":q!"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "x"
+            ],
+            "commands": [
+                ":x!"
+            ]
+        },
+        {
+            "after": [
+                "g",
+                "g",
+                "V",
+                "G"
+            ],
+            "before": [
+                "<c-a>"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "k"
+            ],
+            "commands": [
+                "editor.action.showHover"
+            ]
+        },
+        {
+            "before": [
+                "[",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.prev"
+            ]
+        },
+        {
+            "before": [
+                "]",
+                "d"
+            ],
+            "commands": [
+                "editor.action.marker.next"
+            ]
+        },
+        {
+            "before": [
+                "<leader>",
+                "c",
+                "a"
+            ],
+            "commands": [
+                "editor.action.quickFix"
+            ]
+        },
+        {
+            "after": [
+                "^"
+            ],
+            "before": [
+                "H"
+            ]
+        },
+        {
+            "after": [
+                "$"
+            ],
+            "before": [
+                "L"
+            ]
+        }
+    ],
+    "vim.useSystemClipboard": true,
+    "workbench.settings.editor": "json",
+    "zenMode.hideLineNumbers": false,
+    "workbench.iconTheme": "vscode-icons",
+    "php.suggest.basic": false,
+    "explorer.compactFolders": false,
+    "editor.stickyScroll.scrollWithEditor": false,
+    "workbench.tree.enableStickyScroll": false,
+    "workbench.editor.enablePreview": false,
+    "editor.fontFamily": "'Iosevka'",
+    "workbench.layoutControl.enabled": false,
+    "window.menuBarVisibility": "compact",
+    "window.commandCenter": false,
+    "editor.mouseWheelZoom": true,
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    }
+}
