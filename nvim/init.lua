@@ -26,7 +26,7 @@ vim.opt.colorcolumn = "80"
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+-- vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
 vim.g.netrw_browse_split = 0
@@ -83,35 +83,6 @@ require("lazy").setup({
 				changedelete = { text = "~" },
 			},
 		},
-	},
-	{ -- You can easily change to a different colorscheme.
-		"rose-pine/neovim",
-		priority = 1000,
-		name = "rose-pine",
-		init = function()
-			local rose_pine = require("rose-pine")
-			rose_pine.setup({
-				variant = "moon",
-				dark_variant = "moon",
-				dim_inactive_windows = false,
-				extend_background_behind_borders = true,
-				enable = {
-					terminal = true,
-					legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
-					migrations = true, -- Handle deprecated options automatically
-				},
-
-				styles = {
-					bold = true,
-					italic = true,
-					transparency = true,
-				},
-			})
-
-			vim.cmd.colorscheme("rose-pine")
-			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-		end,
 	},
 	{ -- Fuzzy Finder (files, lsp, etc)
 		"nvim-telescope/telescope.nvim",
@@ -404,6 +375,21 @@ require("lazy").setup({
 			"ibhagwan/fzf-lua", -- optional
 		},
 		config = true,
+	},
+	{
+		"vague2k/vague.nvim",
+		config = function()
+			require("vague").setup({
+				style = {
+					comments = "none",
+					strings = "none",
+				},
+			})
+
+			vim.cmd.colorscheme("vague")
+			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+		end,
 	},
 }, {
 	ui = {
