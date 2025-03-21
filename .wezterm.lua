@@ -1,18 +1,17 @@
--- Pull in the wezterm API
 local wezterm = require("wezterm")
+local mux = wezterm.mux
 
--- This table will hold the configuration.
 local config = {}
 
--- In newer versions of wezterm, use the config_builder which will
--- help provide clearer error messages
 if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
--- This is where you actually apply your config choices
+wezterm.on("gui-startup", function(cmd)
+    local tab, pane, window = mux.spawn_window(cmd or {})
+    window:gui_window():maximize()
+end)
 
--- Add full screen key binding
 config.keys = {
 	{
 		key = "f",
@@ -36,10 +35,8 @@ config.keys = {
 	},
 }
 
--- Font
-config.font = wezterm.font("Iosevka Term")
+config.font = wezterm.font("IosevkaTerm NFM")
 
--- window padding
 config.window_padding = {
 	left = 2,
 	right = 2,
@@ -50,14 +47,11 @@ config.window_padding = {
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 
--- bg opacity
-config.window_background_opacity = 0.92
+config.window_background_opacity = 0.96
 
--- theme
-config.color_scheme = "rose-pine"
+config.term = "xterm-256color"
+-- config.color_scheme = "rose-pine"
 
--- Spawn a pwsh shell in login mode
 config.default_prog = { "C:\\Program Files\\PowerShell\\7\\pwsh.exe", "-l", "-nologo" }
 
--- and finally, return the configuration to wezterm
 return config
