@@ -7,22 +7,43 @@
     },
     "editor.cursorSurroundingLines": 5,
     "editor.fontLigatures": true,
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": false,
     "editor.inlineSuggest.enabled": true,
-    "editor.lineNumbers": "relative",
+    "editor.lineNumbers": "on",
     "editor.linkedEditing": true,
     "editor.minimap.enabled": false,
     "editor.stickyScroll.enabled": false,
-    "editor.suggest.insertMode": "replace",
     "editor.suggestFontSize": 14,
     "editor.wordWrap": "on",
     "errorLens.fontStyleItalic": true,
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
-    "extensions.autoUpdate": "onlyEnabledExtensions",
-    "typescript.preferences.importModuleSpecifier": "relative",
-    "typescript.updateImportsOnFileMove.enabled": "always",
+    "extensions.autoUpdate": "on",
+    "workbench.settings.editor": "json",
+    "zenMode.hideLineNumbers": false,
+    "workbench.iconTheme": "vs-minimal",
+    "php.suggest.basic": false,
+    "explorer.compactFolders": false,
+    "editor.stickyScroll.scrollWithEditor": false,
+    "workbench.tree.enableStickyScroll": false,
+    "workbench.editor.enablePreview": false,
+    "editor.fontFamily": "'Iosevka Nerd Font Mono'",
+    "workbench.layoutControl.enabled": false,
+    "editor.mouseWheelZoom": true,
+    "[jsonc]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "workbench.sideBar.location": "right",
+    "workbench.activityBar.location": "hidden",
+    "window.commandCenter": false,
+    "workbench.browser.showInTitleBar": false,
+    "window.menuBarVisibility": "compact",
+    "Laravel.translation.diagnostics": false,
     "update.showReleaseNotes": false,
+    "workbench.colorTheme": "Dark Modern",
+    "[markdown]": {
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+    },
     "vim.foldfix": true,
     "vim.highlightedyank.color": "rgba(230, 97, 89, 0.7)",
     "vim.highlightedyank.enable": true,
@@ -132,20 +153,27 @@
         }
     ],
     "vim.useSystemClipboard": true,
-    "workbench.settings.editor": "json",
-    "zenMode.hideLineNumbers": false,
-    "workbench.iconTheme": "vscode-icons",
-    "php.suggest.basic": false,
-    "explorer.compactFolders": false,
-    "editor.stickyScroll.scrollWithEditor": false,
-    "workbench.tree.enableStickyScroll": false,
-    "workbench.editor.enablePreview": false,
-    "editor.fontFamily": "'Iosevka'",
-    "workbench.layoutControl.enabled": false,
-    "window.menuBarVisibility": "compact",
-    "window.commandCenter": false,
-    "editor.mouseWheelZoom": true,
-    "[jsonc]": {
-        "editor.defaultFormatter": "vscode.json-language-features"
-    }
+    "intelephense.diagnostics.undefinedMethods": false,
+    "intelephense.codeLens.overrides.enable": true,
+    "intelephense.codeLens.usages.enable": true,
+    "intelephense.codeLens.references.enable": true,
+    "intelephense.diagnostics.undefinedFunctions": false,
+    "files.associations": {
+        "*.eex": "html-eex",
+        "*.blade.php": "blade"
+    },
+    "emmet.includeLanguages": {
+        "blade": "html"
+    },
+    "workbench.secondarySideBar.defaultVisibility": "hidden",
+    "workbench.editor.empty.hint": "hidden",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.codeLens": false,
+    "editor.inlayHints.enabled": "off",
+    "editor.cursorBlinking": "solid",
+    "[php]": {
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+    },
+    "tailwindCSS.lint.cssConflict": "ignore",
+    "explorer.autoReveal": false
 }
