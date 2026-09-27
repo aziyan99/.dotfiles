@@ -59,6 +59,10 @@ vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper win
 vim.keymap.set("n", "bb", vim.cmd.Ex)
 vim.keymap.set("t", "<C-x>", "<C-\\><C-n>", { desc = "[E]xit [T]erminal mode" })
 
+-- Navigate to previous (left) and next (right) tab
+vim.keymap.set("n", "nn", "<cmd>tabnext<CR>", { desc = "Go to previous tab" })
+-- vim.keymap.set("n", "pp", "<cmd>tabprevious<CR>", { desc = "Go to next tab" }) -- clashing with 'paste'
+
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
@@ -147,7 +151,23 @@ require("lazy").setup({
 			local builtin = require("telescope.builtin")
 			vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
 			vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-			vim.keymap.set("n", "ff", builtin.find_files, { desc = "[S]earch [F]iles" })
+      -- vim.keymap.set("n", "ff", builtin.find_files, { desc = "[S]earch [F]iles" })
+      vim.keymap.set("n", "ff", function()
+        builtin.find_files({
+          attach_mappings = function(_, map)
+            local action_set = require("telescope.actions.set")
+
+            -- "tab drop" switches to the tab if already open, otherwise creates a new tab
+            local select_tab_smart = function(prompt_bufnr)
+              action_set.edit(prompt_bufnr, "tab drop")
+            end
+
+            map("i", "<CR>", select_tab_smart)
+            map("n", "<CR>", select_tab_smart)
+            return true
+          end,
+        })
+      end, { desc = "[S]earch [F]iles (Smart Tab)" })
 			vim.keymap.set("n", "<leader>ss", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
 			vim.keymap.set({ "n", "v" }, "<leader>sw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
 			vim.keymap.set("n", "ft", builtin.live_grep, { desc = "[S]earch by [G]rep" })
@@ -279,8 +299,22 @@ require("lazy").setup({
 			local servers = {
 				stylua = {},
 				intelephense = {},
+				erlangls = {},
         vtsls = {},
-				lua_ls = {
+        gopls = {
+          settings = {
+            gopls = {
+              analyses = {
+                unusedparams = true,
+              },
+              staticcheck = true,
+              gofumpt = true,
+              completeUnimported = true,
+              usePlaceholders = true,
+            },
+          },
+        },
+        lua_ls = {
 					on_init = function(client)
 						if client.workspace_folders then
 							local path = client.workspace_folders[1].name
@@ -314,7 +348,8 @@ require("lazy").setup({
 
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
-				-- Add other tools here
+        "goimports",
+        "gofumpt",
 			})
 
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
@@ -360,6 +395,7 @@ require("lazy").setup({
 			-- end,
 			formatters_by_ft = {
 				lua = { "stylua" },
+				go = { "goimports", "gofumt" },
 			},
 		},
 	},
@@ -429,6 +465,11 @@ require("lazy").setup({
 			require("mini.ai").setup({ n_lines = 500 })
 			require("mini.surround").setup()
 			require("mini.pairs").setup()
+			require("mini.indentscope").setup({
+        draw = {
+          animation = require('mini.indentscope').gen_animation.none()
+        }
+      })
 		end,
 	},
 
@@ -442,7 +483,11 @@ require("lazy").setup({
 				"bash",
 				"c",
 				"diff",
-				"html",
+        "go",
+        "gomod",
+        "gowork",
+        "gosum",
+        "html",
 				"lua",
 				"luadoc",
 				"markdown",
@@ -492,20 +537,6 @@ require("lazy").setup({
 		end,
 	},
 
-	{
-		"NeogitOrg/neogit",
-		lazy = true,
-		dependencies = {
-			"nvim-lua/plenary.nvim", -- required
-			"sindrets/diffview.nvim", -- optional
-			"m00qek/baleia.nvim", -- optional
-			"nvim-telescope/telescope.nvim", -- optional
-		},
-		cmd = "Neogit",
-		keys = {
-			{ "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" },
-		},
-	},
 }, { ---@diagnostic disable-line: missing-fields
 	ui = {
 		icons = vim.g.have_nerd_font and {} or {
