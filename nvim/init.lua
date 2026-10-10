@@ -37,7 +37,6 @@ vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 vim.opt.inccommand = "split"
 vim.opt.cursorline = true
-vim.opt.scrolloff = 10
 vim.opt.hlsearch = true
 vim.opt.confirm = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
@@ -70,6 +69,41 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+local center_group = vim.api.nvim_create_augroup("center-cursor", { clear = true })
+local center_enabled = true
+
+local function center_cursor()
+  local half = math.floor(vim.api.nvim_win_get_height(0) / 2)
+  local current = vim.fn.line(".")
+  local last = vim.fn.line("$")
+
+  if current > last - half then
+    local topline = math.max(1, current - half)
+    if vim.fn.winsaveview().topline ~= topline then
+      vim.fn.winrestview({ topline = topline })
+    end
+  end
+end
+
+local function set_center(enabled)
+  center_enabled = enabled
+  vim.opt.scrolloff = 10 -- keep this small, 999 fights with winrestview
+  vim.api.nvim_clear_autocmds({ group = center_group })
+  if enabled then
+    vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+      group = center_group,
+      callback = center_cursor,
+    })
+  end
+end
+
+set_center(true)
+
+vim.keymap.set("n", "<leader>tc", function()
+  set_center(not center_enabled)
+  print("Center cursor: " .. (center_enabled and "on" or "off"))
+end, { desc = "[T]oggle [C]enter cursor" })
 
 -- Make indenting and unindenting in visual mode retain the selection
 vim.api.nvim_set_keymap("v", ">", ">gv", { noremap = true, silent = true })
